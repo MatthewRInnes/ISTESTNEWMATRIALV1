@@ -1,0 +1,53 @@
+@* Turns this file into a Razor Page with a default route. *@
+@page
+
+@* Import my entity namespace so Channel is recognised without a full type name. *@
+@using StreamingSites
+@* Must match the namespace in Index.cshtml.cs for the PageModel type. *@
+@namespace StreamingSites.Pages
+@* Enables ASP.NET Core tag helpers (optional here but harmless). *@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@* Strong typing: Model is IndexModel with Channels, Title, etc. *@
+@model StreamingSites.Pages.IndexModel
+@{
+    // Browser tab title; referenced below in <title>.
+    ViewData["Title"] = "Streaming sites";
+}
+
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.4; }
+        ul { padding-left: 1.25rem; }
+        li { margin-bottom: 0.35rem; }
+    </style>
+</head>
+<body>
+    @* Prints my name and ID line as required for coursework. *@
+    <h1>Matthew Innes — B01841977</h1>
+
+    @* Describes where the list comes from without exposing URLs (this build omits links). *@
+    <p>Streaming site names from the SQLite database file (mapped table for channels).</p>
+
+    @* Empty state when no rows were loaded. *@
+    @if (Model.Channels.Count == 0)
+    {
+        <p>No channels were returned. Check that the database file exists beside the built site and contains rows.</p>
+    }
+    else
+    {
+        <ul>
+            @* Each Channel row from OnGetAsync — names only, no anchor tags. *@
+            @foreach (var channel in Model.Channels)
+            {
+                <li>@channel.Name</li>
+            }
+        </ul>
+    }
+</body>
+</html>

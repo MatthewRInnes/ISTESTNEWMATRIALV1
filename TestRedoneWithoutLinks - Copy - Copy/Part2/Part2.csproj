@@ -1,0 +1,30 @@
+<!-- ASP.NET Core web SDK: Razor Pages, static files, Kestrel. -->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- Target .NET 8 runtime. -->
+    <TargetFramework>net8.0</TargetFramework>
+    <!-- Nullable reference types enabled across the project. -->
+    <Nullable>enable</Nullable>
+    <!-- Implicit global usings reduce boilerplate in .cs files. -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Default namespace for types unless overridden per file; keep aligned with namespace declarations in my .cs files. -->
+    <RootNamespace>StreamingSites</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- EF Core core APIs. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <!-- SQLite provider for EF Core. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+  </ItemGroup>
+
+  <!-- Copy the schema script next to the build output for reference or manual tooling. -->
+  <!-- The .db file is created at run time in Program.cs (EnsureCreated + seed), so no packaged database item is required. -->
+  <ItemGroup>
+    <None Update="StreamingSites.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

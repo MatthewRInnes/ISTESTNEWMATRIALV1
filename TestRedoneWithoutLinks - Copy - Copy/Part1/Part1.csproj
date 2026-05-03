@@ -1,0 +1,25 @@
+<!-- Console executable (.NET 8) — terminal output for streaming channel names (no hyperlinks). -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- Must match namespace declarations in my Part 1 .cs files (same root as Part 2). -->
+    <RootNamespace>StreamingSites</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+  </ItemGroup>
+
+  <!-- Copy schema script beside the exe for reference; Part 1 also creates the db at run time if missing. -->
+  <ItemGroup>
+    <None Update="StreamingSites.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,40 @@
+@page
+@namespace TechForums.Pages
+@model TechForums.Pages.IndexModel
+@* Razor needs @page/@namespace/@model alone on their lines; @namespace must match `namespace TechForums.Pages` in Index.cshtml.cs; @model must match `public class IndexModel` there — example: namespace TechForums.Pages; public class IndexModel : PageModel *@
+@{
+    ViewData["Title"] = "TechForums"; // must match <title> via @ViewData["Title"] below — example: <title>@ViewData["Title"]</title>
+}
+
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.4; }
+        ul { padding-left: 1.25rem; }
+        li { margin-bottom: 0.35rem; }
+    </style>
+</head>
+<body>
+    <h1>Matthew Innes — B01841977</h1>
+
+    <p>Platforms from <strong>TechForums.db</strong> (table <strong>TechForums</strong>), each linking to the stored URL.</p> @* TechForums.db must match Program.cs UseSqlite Data Source=TechForums.db *@
+
+    @if (Model.TechForums.Count == 0)
+    {
+        <p>No rows were returned. Check that <strong>TechForums.db</strong> exists beside the built site.</p> @* filename must match Part2.csproj &lt;None Update="TechForums.db"&gt; *@
+    }
+    else
+    {
+        <ul>
+            @foreach (var site in Model.TechForums)
+            {
+                <li><a href="@site.Url" target="_blank" rel="noopener noreferrer">@site.Name</a></li> @* site.Url/site.Name must match LearningSite.cs — wrong: @.Url; Model.TechForums must match public List&lt;LearningSite&gt; TechForums in Index.cshtml.cs *@
+            }
+        </ul>
+    }
+</body>
+</html>
