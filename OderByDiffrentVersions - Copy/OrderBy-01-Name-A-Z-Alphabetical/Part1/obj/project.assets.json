@@ -1039,11 +1039,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\matth\\OneDrive\\Desktop\\OderByDiffrentVersions\\OrderBy-01-Name-A-Z-Alphabetical\\Part1\\Part1.csproj",
+      "projectUniqueName": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\OderByDiffrentVersions - Copy\\OrderBy-01-Name-A-Z-Alphabetical\\Part1\\Part1.csproj",
       "projectName": "Part1",
-      "projectPath": "c:\\Users\\matth\\OneDrive\\Desktop\\OderByDiffrentVersions\\OrderBy-01-Name-A-Z-Alphabetical\\Part1\\Part1.csproj",
+      "projectPath": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\OderByDiffrentVersions - Copy\\OrderBy-01-Name-A-Z-Alphabetical\\Part1\\Part1.csproj",
       "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\matth\\OneDrive\\Desktop\\OderByDiffrentVersions\\OrderBy-01-Name-A-Z-Alphabetical\\Part1\\obj\\",
+      "outputPath": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\OderByDiffrentVersions - Copy\\OrderBy-01-Name-A-Z-Alphabetical\\Part1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\matth\\AppData\\Roaming\\NuGet\\NuGet.Config"

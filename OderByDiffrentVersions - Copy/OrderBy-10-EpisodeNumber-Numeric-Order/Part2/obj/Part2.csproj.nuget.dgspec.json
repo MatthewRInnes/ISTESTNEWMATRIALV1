@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\matth\\OneDrive\\Desktop\\OderByDiffrentVersions\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\Part2.csproj": {}
+    "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\OderByDiffrentVersions - Copy\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\Part2.csproj": {}
   },
   "projects": {
-    "c:\\Users\\matth\\OneDrive\\Desktop\\OderByDiffrentVersions\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\Part2.csproj": {
+    "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\OderByDiffrentVersions - Copy\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\Part2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\matth\\OneDrive\\Desktop\\OderByDiffrentVersions\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\Part2.csproj",
+        "projectUniqueName": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\OderByDiffrentVersions - Copy\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\Part2.csproj",
         "projectName": "Part2",
-        "projectPath": "c:\\Users\\matth\\OneDrive\\Desktop\\OderByDiffrentVersions\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\Part2.csproj",
+        "projectPath": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\OderByDiffrentVersions - Copy\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\Part2.csproj",
         "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\matth\\OneDrive\\Desktop\\OderByDiffrentVersions\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\obj\\",
+        "outputPath": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\OderByDiffrentVersions - Copy\\OrderBy-10-EpisodeNumber-Numeric-Order\\Part2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\matth\\AppData\\Roaming\\NuGet\\NuGet.Config"

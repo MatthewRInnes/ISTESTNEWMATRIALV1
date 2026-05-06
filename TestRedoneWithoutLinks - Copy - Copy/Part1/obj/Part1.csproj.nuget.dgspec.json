@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\matth\\OneDrive\\Desktop\\TestRedoneWithoutLinks - Copy\\Part1\\Part1.csproj": {}
+    "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\TestRedoneWithoutLinks - Copy - Copy\\Part1\\Part1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\matth\\OneDrive\\Desktop\\TestRedoneWithoutLinks - Copy\\Part1\\Part1.csproj": {
+    "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\TestRedoneWithoutLinks - Copy - Copy\\Part1\\Part1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\matth\\OneDrive\\Desktop\\TestRedoneWithoutLinks - Copy\\Part1\\Part1.csproj",
+        "projectUniqueName": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\TestRedoneWithoutLinks - Copy - Copy\\Part1\\Part1.csproj",
         "projectName": "Part1",
-        "projectPath": "C:\\Users\\matth\\OneDrive\\Desktop\\TestRedoneWithoutLinks - Copy\\Part1\\Part1.csproj",
+        "projectPath": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\TestRedoneWithoutLinks - Copy - Copy\\Part1\\Part1.csproj",
         "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\matth\\OneDrive\\Desktop\\TestRedoneWithoutLinks - Copy\\Part1\\obj\\",
+        "outputPath": "C:\\Users\\matth\\OneDrive\\Desktop\\TesdtV1\\TestRedoneWithoutLinks - Copy - Copy\\Part1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\matth\\AppData\\Roaming\\NuGet\\NuGet.Config"

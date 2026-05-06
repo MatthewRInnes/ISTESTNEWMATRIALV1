@@ -1,0 +1,39 @@
+<!-- SDK-style project file for a console executable (.NET 8). -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Build settings shared by all compile steps in this project. -->
+  <PropertyGroup>
+    <!-- Build produces an .exe / runnable console programme rather than a library. -->
+    <OutputType>Exe</OutputType>
+    <!-- Target framework; matches global.json / installed SDK for net8.0. -->
+    <TargetFramework>net8.0</TargetFramework>
+    <!-- Implicit global usings are injected by the SDK (reduces boilerplate in .cs files). -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Nullable reference types help catch null mistakes at compile time. -->
+    <Nullable>enable</Nullable>
+    <!-- Default namespace for types unless overridden per file; keep in sync with namespace declarations in my .cs files. -->
+    <RootNamespace>Books</RootNamespace>
+  </PropertyGroup>
+
+  <!-- NuGet packages required for EF Core and SQLite. -->
+  <ItemGroup>
+    <!-- Core EF Core APIs (DbContext, DbSet, LINQ translation). -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <!-- SQLite database provider for EF Core (loads native SQLite driver). -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+  </ItemGroup>
+
+  <!-- Files copied beside the built exe so Program.cs can open the database at run time. -->
+  <ItemGroup>
+    <!-- SQLite database file; filename must match Program.cs databaseFileName constant. -->
+    <None Update="Books.db">
+      <!-- Copy when newer than output; ensures debugging runs against current data. -->
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!-- Optional SQL script to recreate the schema; copied for inspection or tooling. -->
+    <None Update="Books.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,32 @@
+<!-- SDK preset for ASP.NET Core web applications (Kestrel, middleware, Razor Pages). -->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- Run on .NET 8 runtime. -->
+    <TargetFramework>net8.0</TargetFramework>
+    <!-- Nullable annotations enabled project-wide. -->
+    <Nullable>enable</Nullable>
+    <!-- Modern C# features including implicit usings for common namespaces. -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Namespace shared by Program.cs, entities, and Razor Pages code-behind when declared. -->
+    <RootNamespace>Movies</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Same EF Core packages as Part 1 so DbContext works inside the web host. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+  </ItemGroup>
+
+  <!-- Ship the SQLite file next to the published web output so the Data Source= filename in Program.cs resolves at run time. -->
+  <ItemGroup>
+    <None Update="Movies.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!-- Schema script for rebuilding or comparing against entity mappings. -->
+    <None Update="Movies.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

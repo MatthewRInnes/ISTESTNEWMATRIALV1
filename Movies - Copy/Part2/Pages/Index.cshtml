@@ -1,0 +1,73 @@
+@* FILE TYPE: Razor view (.cshtml). This is the HTML template the browser receives. *@
+@page
+@* DIRECTIVE: @page = “this file is a routable page”. *@
+
+@* DIRECTIVE: @namespace sets the namespace for this view. *@
+@* Same as the namespace line in `Pages/Index.cshtml.cs`: `namespace Movies.Pages;` *@
+@namespace Movies.Pages
+
+@* DIRECTIVE: @model tells Razor which PageModel class this view reads from. *@
+@* Same as the PageModel class in `Pages/Index.cshtml.cs`: `public class IndexModel : PageModel` *@
+@model Movies.Pages.IndexModel
+
+@* RAZOR CODE BLOCK: runs on the server before HTML is sent. *@
+@{
+    // Browser tab MovieName and default heading context (referenced below as @ViewData["MovieName"]).
+    ViewData["MovieName"] = "Movies";
+}
+
+@* HTML5 document type for standards mode rendering. *@
+<!doctype html>
+@* Root element; lang helps screen readers and search engines with language. *@
+<html lang="en-GB">
+@* Document metadata and embedded CSS for this simple standalone page. *@
+<head>
+    @* Declares UTF-8 so special characters display correctly. *@
+    <meta charset="utf-8" />
+    @* Viewport meta tag for sensible scaling on phones and tablets. *@
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @* Tab MovieName taken from the ViewData dictionary set in the @{ } block above. *@
+    <MovieName>@ViewData["MovieName"]</MovieName>
+    @* Inline styles keep this sample self-contained without separate CSS files. *@
+    <style>
+        @* Page-wide font, spacing, and line height for readability. *@
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.4; }
+        @* Indent bullet lists slightly from the left edge. *@
+        ul { padding-left: 1.25rem; }
+        @* Space between list items so links are easier to tap or click. *@
+        li { margin-bottom: 0.35rem; }
+    </style>
+</head>
+@* Visible page content starts here. *@
+<body>
+    @* Coursework-style identification line at the top of the body. *@
+    <h1>Matthew Innes — B01841977</h1>
+
+    @* Explains that the list is loaded from my SQLite file and the table that maps to the entity. *@
+    <p>Movies from the SQLite database file (mapped table for this page), each linking to the stored IMDb URL.</p>
+
+    @* If the query returned no rows, show a helpful message instead of an empty list. *@
+    @* PROPERTY: Model.Movies MUST match Pages/Index.cshtml.cs:
+       `public List<Movie> Movies { get; private set; } = [];` *@
+    @if (Model.Movies.Count == 0)
+    {
+        @* Warns that the database file may be missing from the web output folder. *@
+        <p>No rows were returned. Check that the database file exists beside the built site output.</p>
+    }
+    else
+    {
+        @* Start an unordered list; each item will be one platform link. *@
+        <ul>
+            @* Loop each entity row loaded in OnGetAsync. *@
+            @* ENTITY: `Movie` is one Movie entity (one row from the Movies table). *@
+            @foreach (var Movie in Model.Movies)
+            {
+            @* ENTITY PROPERTIES (SQL-backed): *@
+            @* - `Movie.MovieName` maps to SQL column `MovieName` in `Movies.sql`. *@
+            @* - `Movie.IMDbUrl` maps to SQL column `IMDbURL` in `Movies.sql`. *@
+            <li><a href="@Movie.IMDbUrl" target="_blank" rel="noopener noreferrer">@Movie.MovieName</a></li>
+            }
+        </ul>
+    }
+</body>
+</html>

@@ -1,0 +1,62 @@
+@* Marks this file as a routable Razor Page (URL endpoint). *@
+@page
+@* Namespace of the PageModel class in Index.cshtml.cs. *@
+@namespace NewsSites.Pages
+@* Strongly typed model: IndexModel exposes properties (e.g. a list) that this view binds to. *@
+@model NewsSites.Pages.IndexModel
+@* Razor block: runs C# before HTML is emitted; sets data passed to the layout/title. *@
+@{
+    // Browser tab title and default heading context (referenced below as @ViewData["Title"]).
+    ViewData["Title"] = "Jobs";
+}
+
+@* HTML5 document type for standards mode rendering. *@
+<!doctype html>
+@* Root element; lang helps screen readers and search engines with language. *@
+<html lang="en-GB">
+@* Document metadata and embedded CSS for this simple standalone page. *@
+<head>
+    @* Declares UTF-8 so special characters display correctly. *@
+    <meta charset="utf-8" />
+    @* Viewport meta tag for sensible scaling on phones and tablets. *@
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @* Tab title taken from the ViewData dictionary set in the @{ } block above. *@
+    <title>@ViewData["Title"]</title>
+    @* Inline styles keep this sample self-contained without separate CSS files. *@
+    <style>
+        @* Page-wide font, spacing, and line height for readability. *@
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.4; }
+        @* Indent bullet lists slightly from the left edge. *@
+        ul { padding-left: 1.25rem; }
+        @* Space between list items so links are easier to tap or click. *@
+        li { margin-bottom: 0.35rem; }
+    </style>
+</head>
+@* Visible page content starts here. *@
+<body>
+    @* Coursework-style identification line at the top of the body. *@
+    <h1>Matthew Innes — B01841977</h1>
+
+    @* Explains that the list is loaded from my SQLite file and the table that maps to the entity. *@
+    <p>Jobs from the SQLite database file (mapped table for this page), each linking to the stored URL.</p>
+
+    @* If the query returned no rows, show a helpful message instead of an empty list. *@
+    @if (Model.NewsSites.Count == 0)
+    {
+        @* Warns that the database file may be missing from the web output folder. *@
+        <p>No rows were returned. Check that the database file exists beside the built site output.</p>
+    }
+    else
+    {
+        @* Start an unordered list; each item will be one platform link. *@
+        <ul>
+            @* Loop each entity row loaded in OnGetAsync. *@
+            @foreach (var site in Model.NewsSites)
+            {
+                @* One list item: link text is Name; href is Url; opens in a new tab safely. *@
+                <li><a href="@site.Url" target="_blank" rel="noopener noreferrer">@site.Name</a></li>
+            }
+        </ul>
+    }
+</body>
+</html>

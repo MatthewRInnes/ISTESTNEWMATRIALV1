@@ -1,0 +1,66 @@
+@* Razor view (.cshtml): HTML template sent to the browser. *@
+
+@* Makes this file a routable page (it can be visited via a URL). *@
+@page
+
+@* Sets the generated namespace for this view. *@
+@namespace Students.Pages
+
+@* Declares which PageModel this view is bound to. *@
+@model Students.Pages.IndexModel
+
+@* Razor code block: runs on the server before HTML is sent. *@
+@{
+    // Sets the browser tab title.
+    ViewData["Title"] = "Students";
+}
+
+@* Standard HTML5 doctype. *@
+<!doctype html>
+@* Root element; language hint for accessibility and search. *@
+<html lang="en-GB">
+@* Head contains metadata and styles. *@
+<head>
+    @* Declares UTF-8 so special characters display correctly. *@
+    <meta charset="utf-8" />
+    @* Makes the layout scale nicely on mobile devices. *@
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @* Uses the title set in the Razor block above. *@
+    <title>@ViewData["Title"]</title>
+    @* Inline CSS for simple styling. *@
+    <style>
+        @* Page-wide font, spacing, and line height for readability. *@
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.4; }
+        @* Indents the bullet list slightly. *@
+        ul { padding-left: 1.25rem; }
+        @* Adds spacing between list items. *@
+        li { margin-bottom: 0.35rem; }
+    </style>
+</head>
+@* Visible page content. *@
+<body>
+    @* Heading shown at the top of the page. *@
+    <h1>Matthew Innes — B01841977</h1>
+
+    @* Short description paragraph. *@
+    <p>Students from the SQLite database file (mapped table for this page), each linking to the stored Portfolio URL.</p>
+
+    @* If no rows were loaded, show a message instead of an empty list. *@
+    @if (Model.Students.Count == 0)
+    {
+        <p>No rows were returned. Check that the database file exists beside the built site output.</p>
+    }
+    else
+    {
+        @* Unordered list of students. *@
+        <ul>
+            @* Loops through each Student loaded by the PageModel. *@
+            @foreach (var student in Model.Students)
+            {
+                @* Renders a link using the row’s PortfolioUrl and displays the row’s FullName. *@
+                <li><a href="@student.PortfolioUrl" target="_blank" rel="noopener noreferrer">@student.FullName</a></li>
+            }
+        </ul>
+    }
+</body>
+</html>

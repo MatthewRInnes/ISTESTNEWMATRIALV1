@@ -1,0 +1,79 @@
+@* FILE TYPE: Razor view (.cshtml). This is the HTML template the browser receives. *@
+
+@* DIRECTIVE: @page = “this file is a routable page”. *@
+@page
+
+@* DIRECTIVE: @namespace sets the namespace for this .cshtml file. *@
+@* MUST match the PageModel file line: `namespace Students.Pages;` *@
+
+@* MUST match Index.cshtml.cs (namespace line): `namespace Students.Pages;` *@
+@namespace Students.Pages
+
+@* DIRECTIVE: @model declares the PageModel CLASS this view binds to. *@
+@* MUST match the PageModel file class line: `public class IndexModel : PageModel` *@
+@model Students.Pages.IndexModel
+
+@* RAZOR CODE BLOCK: runs on the server before HTML is sent. *@
+@* ViewData["Title"] is NOT the SQL column FullName; it is only the browser tab text. *@
+@{
+    // Browser tab title and default heading context (referenced below as @ViewData["Title"]).
+    ViewData["Title"] = "Students";
+}
+
+@* HTML5 document type for standards mode rendering. *@
+<!doctype html>
+@* Root element; lang helps screen readers and search engines with language. *@
+<html lang="en-GB">
+@* Document metadata and embedded CSS for this simple standalone page. *@
+<head>
+    @* Declares UTF-8 so special characters display correctly. *@
+    <meta charset="utf-8" />
+    @* Viewport meta tag for sensible scaling on phones and tablets. *@
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @* Tab title taken from the ViewData dictionary set in the @{ } block above. *@
+    <title>@ViewData["Title"]</title>
+    @* Inline styles keep this sample self-contained without separate CSS files. *@
+    <style>
+        @* Page-wide font, spacing, and line height for readability. *@
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.4; }
+        @* Indent bullet lists slightly from the left edge. *@
+        ul { padding-left: 1.25rem; }
+        @* Space between list items so links are easier to tap or click. *@
+        li { margin-bottom: 0.35rem; }
+    </style>
+</head>
+@* Visible page content starts here. *@
+<body>
+    @* Coursework-style identification line at the top of the body. *@
+    <h1>Matthew Innes — B01841977</h1>
+
+    @* Explains that the list is loaded from my SQLite file and the table that maps to the entity. *@
+    <p>Students from the SQLite database file (mapped table for this page), each linking to the stored Portfolio URL.</p>
+
+    @* PROPERTY: Model.Students is a PageModel PROPERTY (C#) defined in Index.cshtml.cs. *@
+    @* MUST match exactly this line in Index.cshtml.cs:
+       `public List<Student> Students { get; private set; } = [];` *@
+    @if (Model.Students.Count == 0)
+    {
+        @* Warns that the database file may be missing from the web output folder. *@
+        <p>No rows were returned. Check that the database file exists beside the built site output.</p>
+    }
+    else
+    {
+        @* Start an unordered list; each item will be one platform link. *@
+        <ul>
+            @* ENTITY: `student` is one Student entity (one row from the Students table). *@
+            @* The entity class is in LearningSite.cs:
+               `public class Student { ... }` *@
+            @foreach (var student in Model.Students)
+            {
+                @* ENTITY PROPERTIES: these are property names on the Student entity class. *@
+                @* MUST match these exact lines in LearningSite.cs:
+                   `public string FullName { get; set; }`
+                   `public string PortfolioUrl { get; set; }` *@
+                <li><a href="@student.PortfolioUrl" target="_blank" rel="noopener noreferrer">@student.FullName</a></li>
+            }
+        </ul>
+    }
+</body>
+</html>
